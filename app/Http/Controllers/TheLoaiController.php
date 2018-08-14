@@ -34,8 +34,10 @@ class TheLoaiController extends Controller
     	$theloai = new TheLoai;
     	$theloai->Ten = $request->Ten;
     	$theloai->TenKhongDau = changeTitle($request->Ten);
+    	$theloai->save();
 
-    	echo changeTitle($request->Ten);
+    	return redirect('admin/theloai/them')->with('thongbao','Thêm thành công');
+    	
     }
     //The first array is the error that can be happen, and the second is the error handler
 
