@@ -4,6 +4,7 @@
     </IfModule>
 
     RewriteEngine On
+    RewriteBase /electronic-express/public/index.php/
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
