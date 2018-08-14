@@ -17,10 +17,6 @@ Route::get('/', function () {
 });
 
 Route::get('thu', function(){
-	$theloai = TheLoai::find(1);
-	foreach($theloai->loaitin as $loaitin)
-	{
-		echo $loaitin->Ten."<br>";
-
-	}
+	return view('admin.theloai.danhsach');
 });
+
