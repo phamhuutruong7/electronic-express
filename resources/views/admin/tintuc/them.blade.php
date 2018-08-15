@@ -74,7 +74,7 @@
                 var idTheLoai = $(this).val();
                 //alert(idTheLoai);
                 $.get("admin/ajax/loaitin/"+idTheLoai,function(data){
-                    $("LoaiTin").html(data);
+                    $("#LoaiTin").html(data);
                 });
             });
         });
