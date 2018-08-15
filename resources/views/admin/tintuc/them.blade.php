@@ -6,18 +6,27 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
-                            <small>Add</small>
+                        <h1 class="page-header">Tin tức
+                            <small>Thêm tin tức</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="" method="POST">
                             <div class="form-group">
-                                <label>Category Parent</label>
-                                <select class="form-control">
-                                    <option value="0">Please Choose Category</option>
-                                    <option value="">Tin Tức</option>
+                                <label>Thể loại</label>
+                                <select class="form-control" name="TheLoai" id="TheLoai">
+                                    @foreach($theloai as $tl)
+                                        <option value="{{$tl->id}}" name="TheLoai">{{$tl->Ten}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                             <div class="form-group">
+                                <label>Loại tin</label>
+                                <select class="form-control" name="LoaiTin" id="LoaiTin">
+                                    @foreach($loaitin as $lt)
+                                        <option value="{{$lt->id}}">{{$lt->Ten}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
@@ -56,4 +65,18 @@
         </div>
 <!-- /#page-wrapper -->
 
+@endsection
+
+@section('script')2
+    <script>
+        $(document).ready(function(){
+            $("#TheLoai").change(function(){
+                var idTheLoai = $(this).val();
+                //alert(idTheLoai);
+                $.get("admin/ajax/loaitin/"+idTheLoai,function(data){
+                    $("LoaiTin").html(data);
+                });
+            });
+        });
+    </script>
 @endsection
