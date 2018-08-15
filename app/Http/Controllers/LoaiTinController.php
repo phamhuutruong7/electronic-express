@@ -5,19 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\TheLoai;
+use App\LoaiTin;
 
-class TheLoaiController extends Controller
+class LoaiTinController extends Controller
 {
     //
     public function getDanhSach()
     {
-    	$theloai = TheLoai::all();
-    	return view('admin.theloai.danhsach', ['theloai'=> $theloai]);
+    	$loaitin = LoaiTin::all();
+    	return view('admin.loaitin.danhsach', ['loaitin'=> $loaitin]);
     }
 
     public function getThem()
     {
-    	return view('admin.theloai.them');
+    	return view('admin.loaitin.them');
     }
 
     public function postThem(Request $request)
@@ -72,9 +73,9 @@ class TheLoaiController extends Controller
 
     public function getXoa($id)
     {
-    	$theloai = TheLoai::find($id);
+    	$theloai = LoaiTin::find($id);
     	$theloai->delete();
 
-    	return redirect('admin/theloai/danhsach')->with('thongbao','Đã xóa thể loại');
+    	return redirect('admin/theloai/danhsach')->with('thongbao','Đã xóa loại tin thành công');
     }
 }
