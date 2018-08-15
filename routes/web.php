@@ -58,6 +58,11 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('xoa/{id}','TinTucController@getXoa');
 	});
 
+	Route::group(['prefix'=>'comment'],function(){
+
+		Route::get('xoa/{id}/{idTinTuc}','CommentController@getXoa');
+	});
+
 	Route::group(['prefix'=>'user'],function(){
 		Route::get('danhsach','UserController@getDanhSach');
 		
@@ -69,9 +74,14 @@ Route::group(['prefix'=>'admin'], function(){
 	Route::group(['prefix'=>'slide'],function(){
 		Route::get('danhsach','SlideController@getDanhSach');
 		
-		Route::get('sua','SlideController@getSua');
+		Route::get('sua/{id}','SlideController@getSua');
+		Route::post('sua/{id}','SlideController@postSua');
+
 		
 		Route::get('them','SlideController@getThem');
+		Route::post('them','SlideController@postThem');
+
+		Route::get('xoa/{id}','SlideController@getXoa');
 
 	});
 
