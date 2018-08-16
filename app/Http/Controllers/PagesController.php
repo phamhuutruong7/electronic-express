@@ -7,6 +7,7 @@ use App\TheLoai;
 use App\Slide;
 use App\LoaiTin;
 use App\TinTuc;
+use Illuminate\Support\Facades\Auth;
 class PagesController extends Controller
 {
     //
@@ -45,5 +46,32 @@ class PagesController extends Controller
     	$tinnoibat = TinTuc::where('NoiBat',1)->take(4)->get();
     	$tinlienquan = TinTuc::where('idLoaiTin',$tintuc->idLoaiTin)->take(4)->get();
     	return view('pages.tintuc',['tintuc'=>$tintuc, 'tinnoibat'=>$tinnoibat, 'tinlienquan'=>$tinlienquan]);
+    }
+
+    function getDangNhap()
+    {
+    	return view('pages.dangnhap');
+    }
+
+    function postDangNhap(Request $request)
+    {
+    	 $this->validate($request, 
+            [
+                'email'=>'required',
+                'password'=>'required|min:3|max:32'
+            ],[
+                'email.required'=>'Bạn chưa nhập email',
+                'password.required'=>'Bạn chưa nhập password',
+                'password.min'=>'Password không được nhỏ hơn 3 kí tự',
+                'password.max'=>'Password không được nhiều hơn 32 kí tự'
+            ]);
+    	  if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
+        {
+            return redirect('trangchu');
+        }
+        else
+        {
+            return redirect('dangnhap')->with('thongbao','Đăng nhập không thành công');
+        }
     }
 }
