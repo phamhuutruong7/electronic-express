@@ -26,7 +26,7 @@
 			                	<h3>
 			                		<a href="category.html">{{$tl->Ten}}</a> | 	
 			                		@foreach($tl->loaitin as $lt)
-			                			<small><a href="category.html"><i>{{$lt->Ten}}</i></a>/</small>
+			                			<small><a href="loaitin/{{$lt->id}}/{{$lt->TenKhongDau}}.html"><i>{{$lt->Ten}}</i></a>/</small>
 			                		@endforeach
 			                	</h3>
 			                	<?php 
