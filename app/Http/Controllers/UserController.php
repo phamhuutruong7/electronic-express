@@ -25,7 +25,7 @@ class UserController extends Controller
         $this->validate($request,
             [
                 'name'   => 'required|min:3',
-                'email'  => 'required|email|unique:user,email',
+                'email'  => 'required|email|unique:users,email',
                 'password' => 'required|min:3|max:32',
                 'passwordAgain' =>'required|same:password'
 
@@ -42,7 +42,7 @@ class UserController extends Controller
                 'passwordAgain.same' =>'Mật khẩu nhập lại chưa khớp'
 
             ]);
-        $user = new User();
+        $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);

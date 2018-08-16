@@ -47,10 +47,10 @@
                             <div class="form-group">
                                 <label>Quyền người dùng</label>
                                 <label class="radio-inline">
-                                    <input name="quyen" value="0" checked type="radio">Thường
+                                    <input name="quyen" value="0" checked="" type="radio">Thường
                                 </label>
                                 <label class="radio-inline">
-                                    <input name="quyen" value="1" checked="" type="radio">Admin
+                                    <input name="quyen" value="1"  type="radio">Admin
                                 </label>
                                 
                             </div>
