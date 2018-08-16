@@ -32,7 +32,7 @@
 			    <ul class="nav navbar-nav pull-right">
                     <!--If the user is not login yet, then the button Sign in and Log in will appear-->
                     <!--If the user is already login, then the name and the Logout will appear-->
-                    @if(!isset($nguoidung))
+                    @if(Auth::user() === false)
 
                         <li>
                             <a href="dangky">Đăng ký</a>
@@ -45,7 +45,7 @@
                         <li>
                         	<a>
                         		<span class ="glyphicon glyphicon-user"></span>
-                        		{{$nguoidung->name}}
+                        		  
                         	</a>
                         </li>
 

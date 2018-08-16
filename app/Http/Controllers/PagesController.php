@@ -80,7 +80,7 @@ class PagesController extends Controller
         }
     }
 
-    function getDangXuat
+    function getDangXuat()
     {
     	Auth::logout();
     	return redirect('trangchu');
