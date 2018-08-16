@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -101,5 +102,37 @@ class UserController extends Controller
     	$user = User::find($id);
         $user->delete();
         return redirect('admin/user/danhsach')->with('thongbao','Đã xóa người dùng thành công');
+    }
+
+    public function getDangNhapAdmin()
+    {
+        return view('admin.login');
+    }
+
+    public function postDangNhapAdmin(Request $request)
+    {
+        $this->validate($request, 
+            [
+                'email'=>'required',
+                'password'=>'required|min:3|max:32'
+            ],[
+                'email.required'=>'Bạn chưa nhập email',
+                'password.required'=>'Bạn chưa nhập password',
+                'password.min'=>'Password không được nhỏ hơn 3 kí tự',
+                'password.max'=>'Password không được nhiều hơn 32 kí tự'
+            ]);
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
+        {
+            return redirect('admin/theloai/danhsach');
+        }
+        else
+        {
+            return redirect('admin/dangnhap')->with('thongbao','Đăng nhập không thành công');
+        }
+    }
+    public function getDangXuatAdmin()
+    {
+        Auth::logout();
+        return redirect('admin/dangnhap');
     }
 }

@@ -16,6 +16,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('admin/dangnhap','UserController@getDangNhapAdmin');
+Route::post('admin/dangnhap','UserController@postDangNhapAdmin');
+Route::get('admin/logout','UserController@getDangXuatAdmin');
 Route::get('thu', function(){
 	return view('admin.theloai.danhsach');
 });
