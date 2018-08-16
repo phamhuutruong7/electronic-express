@@ -23,7 +23,7 @@ Route::get('thu', function(){
 	return view('admin.theloai.danhsach');
 });
 
-Route::group(['prefix'=>'admin'], function(){
+Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 	//admin/theloai/them...sua...danhsach
 	Route::group(['prefix'=>'theloai'],function(){
 		Route::get('danhsach','TheLoaiController@getDanhSach');
