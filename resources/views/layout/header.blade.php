@@ -30,23 +30,29 @@
 			    </form>
 
 			    <ul class="nav navbar-nav pull-right">
-                    <li>
-                        <a href="#">Đăng ký</a>
-                    </li>
-                    <li>
-                        <a href="#">Đăng nhập</a>
-                    </li>
-                    <li>
-                    	<a>
-                    		<span class ="glyphicon glyphicon-user"></span>
-                    		Bùi Đức Phú
-                    	</a>
-                    </li>
+                    <!--If the user is not login yet, then the button Sign in and Log in will appear-->
+                    <!--If the user is already login, then the name and the Logout will appear-->
+                    @if(!isset($nguoidung))
 
-                    <li>
-                    	<a href="#">Đăng xuất</a>
-                    </li>
-                    
+                        <li>
+                            <a href="dangky">Đăng ký</a>
+                        </li>
+                        <li>
+                            <a href="dangnhap">Đăng nhập</a>
+                        </li>
+                    @else
+
+                        <li>
+                        	<a>
+                        		<span class ="glyphicon glyphicon-user"></span>
+                        		{{$nguoidung->name}}
+                        	</a>
+                        </li>
+
+                        <li>
+                        	<a href="dangxuat">Đăng xuất</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
 

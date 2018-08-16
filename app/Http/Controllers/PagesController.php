@@ -18,6 +18,11 @@ class PagesController extends Controller
     	view()->share('theloai',$theloai);
     	view()->share('slide',$slide);
     	//to share the variable 'theloai', that make we dont have to call $theloai = TheLoai::all(); in all other functions
+   		if(Auth::check())
+   		{
+   			view()->share('nguoidung',Auth::user());
+    	}
+
     }
 
     function trangchu()
@@ -73,5 +78,11 @@ class PagesController extends Controller
         {
             return redirect('dangnhap')->with('thongbao','Đăng nhập không thành công');
         }
+    }
+
+    function getDangXuat
+    {
+    	Auth::logout();
+    	return redirect('trangchu');
     }
 }
