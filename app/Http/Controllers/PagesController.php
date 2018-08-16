@@ -8,9 +8,22 @@ use App\TheLoai;
 class PagesController extends Controller
 {
     //
-    function trangchu()
+    function __construct()
     {
     	$theloai = TheLoai::all();
-    	return view('pages.trangchu',['theloai'=>$theloai]);
+    	view()->share('theloai',$theloai);
+    	//to share the variable 'theloai', that make we dont have to call $theloai = TheLoai::all(); in all other functions
+    }
+
+    function trangchu()
+    {
+    	//$theloai = TheLoai::all();
+    	return view('pages.trangchu');
+    }
+
+    function lienhe()
+    {
+    	//$theloai = TheLoai::all();
+    	return view('pages.lienhe');
     }
 }
